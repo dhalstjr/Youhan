@@ -45,6 +45,14 @@ body {
   font-family: "Pretendard";
 }
 
+br {
+  display: none;
+}
+
+.change {
+  display: none;
+}
+
 .hidden {
   position: absolute;
   margin: -1px;
