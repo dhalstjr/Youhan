@@ -4,6 +4,94 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>유한건강생활</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/script.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="navi-skip">
+      <a href="#container">본문 바로가기</a>
+    </div>
+
+    <!-- header - start-->
+    <section id="header">
+      <!-- 감싸는 영역 - 최대 넓이 : 1200px -->
+      <div class="wrap">
+        <h1 class="logo-box">
+          <a href="#" class="logo"><i class="hidden">유한건강생활</i></a>
+        </h1>
+        <!-- gnb hover 시 나오는 로고 -->
+        <button type="button" class="menu-open">
+          <i class="hidden">메뉴열기</i>
+        </button>
+
+        <!-- gnb -->
+        <div class="gnb-curtain"></div>
+        <div class="gnb">
+          <div class="gnb-top">
+            <h2 class="logo-box">
+              <a href="#" class="logo_inner-type">
+                <i class="hidden">유한건강생활</i>
+              </a>
+            </h2>
+            <button type="button" class="menu-close">
+              <i class="hidden">메뉴닫기</i>
+            </button>
+          </div>
+
+          <div class="depth">
+            <ul class="depth_list">
+              <li class="depth_item">
+                <a href="#" class="depth_text">회사소개</a>
+              </li>
+              <li class="depth_item">
+                <a href="#" class="depth_text">사업소개</a>
+              </li>
+              <li class="depth_item">
+                <a href="#" class="depth_text">기업문화</a>
+              </li>
+              <li class="depth_item">
+                <a href="#" class="depth_text">지속가능성</a>
+              </li>
+              <li class="depth_item">
+                <a href="#" class="depth_text">미디어</a>
+              </li>
+              <li class="depth_item">
+                <a href="#" class="depth_text">고객지원</a>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="option">
+            <li class="language">
+              <button type="button" class="lang_select">
+                <span>KOR</span>
+              </button>
+
+              <!-- 언어 선택 서브 메뉴 -->
+              <ul class="lang_list">
+                <li><a href="#">KOR</a></li>
+                <li><a href="#">ENG</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- header에 copyright가 있는 경우에는 브랜드 강조 및 UI/UX 요구 등 이유로 있을 경우가 있음. -->
+          <div class="header-copyright">
+            "Copyright @ YUHANCARE Coporation"
+            <br />
+            "All Rights Reserved."
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- header -end -->
+
+    <!-- main - start -->
+    <section id="container" class="main"></section>
+    <!-- main  -end -->
+
+    <!-- footer - start-->
+    <section id="footer"></section>
+    <!-- footer -end -->
+  </body>
 </html>
