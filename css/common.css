@@ -103,3 +103,7 @@ br {
 :root {
   --clientWidth: 100vw;
 }
+
+.match-text {
+  display: none;
+}
