@@ -1,5 +1,9 @@
 @charset 'utf-8';
 
+body {
+  line-height: 1;
+}
+
 .navi-skip a {
   position: absolute;
   top: -100%;
@@ -13,13 +17,14 @@
   line-height: 2rem;
 }
 
+/* header CSS */
 #header {
   position: fixed;
   top: 0;
   left: 50%;
   width: 100%;
   height: 8.4rem;
-  background: #000;
+  background: #00000020;
   transform: translateX(-50%);
 
   z-index: 100;
@@ -30,9 +35,150 @@
   display: block;
   position: absolute;
   top: 84px;
-  left: 0;
+  left: calc(50% - 50vw);
   width: 100vw;
   height: 1px;
-  background-color: rgba(34, 34, 34, 0.2);
   background-color: #fff;
+}
+
+/* 넓이를 주기 위해서 한 것 같음 */
+.wrap {
+  width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#header .logo-box {
+  position: relative;
+  width: 160px;
+  /*  line-height: 0; */
+  color: transparent;
+  font-size: 0;
+  z-index: 20;
+  line-height: 0;
+}
+
+/* #header .logo-box a 로 이미지가 두개로 나옴. */
+/* 이유 - <a></a> 태그 내부에 콘텐츠가 들어있음. */
+/* 브라우저는 기본적으로 a태그 내부의 콘텐츠를 (텍스트, 요소 등) 표시하려고 함 */
+/* background-image로 로고가 들어가면서 , 텍스트도 남아있어 이미지가 두개로 표시 될 경우도 있음/ */
+#header .logo-box .logo {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 160px;
+  height: 64px;
+  background-image: url(../img/logo-color.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* 이걸 해야 헤더의 높이가 맞음. */
+/* 이 요소들은 기본적으로 헤더 내부에서 특정 높이를 가지고 있을 경우가 큼. */
+/* display : none을 사용하면서 공간이 사라짐 */
+/* 특히 gnb-top, copy-right가 사라지면서 헤더 높이가 알맞게 맞을 경우가 큼 */
+.menu-open,
+.gnb-curtain,
+.header-copyright,
+.gnb-top {
+  display: none;
+}
+
+/* 서브메뉴 하위 요소들의 부모가 되기 위한 relative */
+.depth,
+.depth_list,
+.depth_item,
+.depth_text {
+  position: relative;
+}
+
+/* depth1 CSS */
+.depth1 {
+  padding-left: 32rem;
+}
+
+.depth1 .depth1-list {
+  display: flex;
+  width: 96rem;
+  padding-top: 2rem;
+  justify-content: center;
+
+  /* display : flex 를 사용했지만 내부 요소들이 inline-block 요소를 가지고 있다면 */
+  /* font-size에 의해 공백이 생길 수가 있음. 그래서 0으로 설정하면 공백이 제거되면서 요소들이 정확하게 배치 */
+  /* gnb(depth_item1) 들이 예상보다 더 벌어지는 문제를 방지할 수 있음.*/
+  font-size: 0; /* 요소 간 공백 제거 */
+  line-height: 0; /* 불필요한 세로 여백 제거 */
+}
+
+.depth1 .depth1-list .depth_item1 {
+  width: 16rem;
+
+  position: relative; /* 서브메뉴들의 부모가 되기 위한  */
+  vertical-align: top;
+}
+
+.depth1 .depth1-list .depth_text1 {
+  display: block; /* display : block 을 줘야 text가 center로 간다 이유는 block을 줘야 자신만의 공간을 갖기 떄문인 것 같다. */
+  font-size: 2rem;
+  color: #000;
+
+  text-align: center;
+  line-height: 6.4rem;
+}
+
+.option {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.option .language .lang_select {
+  position: relative;
+  border: none;
+  font-size: 1.6rem;
+  color: #000;
+
+  /* 버튼 크기를 위한 padding */
+  padding: 1rem 2rem;
+
+  vertical-align: middle;
+}
+/* 버튼 옆 아이콘 */
+.option .language .lang_select::after {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 7px;
+
+  margin-left: 4px;
+  background-image: url(../img/lang_arrow.svg);
+  background-repeat: no-repeat;
+
+  background-size: contain;
+
+  vertical-align: middle;
+}
+
+/* 언어 메뉴 서브메뉴 */
+.option .language .lang_list {
+  position: absolute;
+  width: 100%;
+
+  background-color: rgba(255, 255, 255, 0.7);
+
+  /* 하위 메뉴 보이지 않게 */
+  visibility: hidden;
+  opacity: 0;
+}
+
+.option .language .lang_list a {
+  display: block;
+  width: 100%;
+
+  text-align: center;
+  font-size: 1.6rem;
+  color: #717171;
+
+  padding: 5px 10px;
 }
