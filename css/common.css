@@ -107,3 +107,21 @@ br {
 .match-text {
   display: none;
 }
+
+button {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+
+  vertical-align: middle;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+button,
+input,
+select {
+  display: inline-block;
+}
