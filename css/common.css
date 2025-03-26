@@ -36,17 +36,12 @@ img {
   max-width: 100%;
 }
 
-html,
-body {
-  overflow-x: hidden;
-}
-
 body {
   font-family: "Pretendard";
 }
 
 br {
-  display: none;
+  /*   display: none; */
 }
 
 .change {
@@ -83,29 +78,12 @@ br {
   word-break: keep-all;
 }
 
-.mt-10 {
-  margin-top: 1rem;
-}
-
-/* 애니메이션 (스크롤) */
-@keyframes scroll-down-box-animation-arrow {
-  0% {
-    transform: translateY(-0.5rem);
-  }
-  50% {
-    transform: translateY(0.5rem);
-  }
-  100% {
-    transform: translateY(-0.5rem);
-  }
-}
-
 :root {
   --clientWidth: 100vw;
 }
 
 .match-text {
-  display: none;
+  /*   display: none; */
 }
 
 button {

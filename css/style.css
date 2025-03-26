@@ -364,3 +364,179 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+/* main sec02 */
+.main .sec02 {
+  text-align: center;
+  color: #181818;
+  margin-bottom: 8.9rem;
+}
+
+.main .sec02 .brand-slogan {
+  font-size: 4.2rem;
+  font-weight: 700;
+  /* 본페이지는 margin-bottom을 주는 형식을 했음 */
+  margin-bottom: 2.4rem;
+}
+
+.main .sec02 .brand-text {
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 3.4rem;
+  margin-bottom: 5rem;
+}
+
+.main .sec02 .mask-text {
+  width: 120rem;
+  height: 21rem;
+  margin: 0 auto;
+  background: #000 url(../img/);
+
+  position: relative;
+  overflow: hidden;
+  font-size: 0; /* 여백 없애기 */
+
+  border-radius: 2rem;
+  margin-bottom: 5rem;
+}
+
+.main .sec02 .conbox .tab-box {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  margin-bottom: 5rem;
+}
+
+.main .sec02 .conbox .tab-box .brand-tab {
+  width: 18rem;
+  height: 5.8rem;
+  border: 1px solid #181818;
+  border-radius: 2.9rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main .sec02 .conbox .tab-box .brand-tab.on {
+  background: #181818;
+  color: white;
+}
+
+.main .sec02 .match-box .match-text {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+  margin-bottom: 4rem;
+}
+
+/* 맨처음 보여지는 글 */
+.main .sec02 .match-box .match-text.active {
+}
+
+.main .sec02 .link-box {
+  margin-bottom: 8.8rem;
+}
+
+.main .sec02 .link-box a {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #181818;
+  position: relative;
+
+  line-height: 2.4rem;
+}
+
+.main .sec02 .link-box a::after {
+  content: "";
+  display: inline-block;
+
+  width: 0.9rem;
+  height: 2.4rem;
+  margin-left: 1.2rem;
+  vertical-align: top;
+
+  background-image: url(../img/link-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.main .sec02 .main-banner {
+  position: relative;
+  overflow: hidden;
+}
+/* clip-path 사용 애니메이션 */
+.main .sec02 .main-banner.on {
+}
+
+.main .sec02 .main-banner .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(9, 9, 9, 0.27) url(../img/main-banner-bg01.png) no-repeat
+    center / cover;
+
+  /* background로 들어간 건 background-blend-mode로 */
+  /* mix-blend-mode: multiply; */
+  background-blend-mode: multiply;
+
+  transition: 600ms ease-in-out;
+}
+
+.main .sec02 .main-banner:hover .bg {
+  transform: scale(1.1);
+}
+
+.main .sec02 .main-banner a {
+  height: 46rem;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+
+  flex-direction: column;
+}
+
+.main .sec02 .main-banner a .banner-name {
+  font-weight: 700;
+  font-size: 4.2rem;
+  line-height: 5.2rem;
+
+  margin-bottom: 2.5rem;
+}
+
+.main .sec02 .main-banner a .banner-link {
+  font-size: 1.8rem;
+  font-weight: 700;
+
+  width: 21rem;
+  height: 4rem;
+  border: 1px solid white;
+  border-radius: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .sec02 .main-banner a .banner-link::after {
+  content: "";
+  display: inline-block;
+  width: 0.9rem;
+  height: 1.6rem;
+  background: url(../img/link-arror-white.svg) no-repeat center/ contain;
+  margin-left: 1.2rem;
+
+  vertical-align: top;
+}
