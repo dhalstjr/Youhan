@@ -44,6 +44,10 @@ br {
   /*   display: none; */
 }
 
+.slogan br {
+  display: none;
+}
+
 .change {
   display: none;
 }
