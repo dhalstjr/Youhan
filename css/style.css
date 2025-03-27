@@ -916,3 +916,70 @@ a {
   margin-left: 1.2rem;
   vertical-align: top;
 }
+
+/* 링크섹션 sec04 */
+/* 여긴 paading으로 줌 */
+.main .sec04 {
+  padding: 10rem 0;
+}
+
+/* li는 선만 명령해줌 */
+.main .sec04 .link-list li:first-child {
+  border-top: 2px solid #181818;
+}
+
+.main .sec04 .link-list li {
+  border-bottom: 2px solid #b9b9b9;
+}
+
+.main .sec04 .link-list li a {
+  display: block;
+  height: 9.6rem;
+  color: #181818;
+  display: flex;
+  align-items: center;
+
+  padding: 0 1.5rem;
+
+  /* 부모 요소가 됨 */
+  position: relative;
+}
+
+.main .sec04 .link-list li a span {
+  display: inline-block;
+}
+
+.main .sec04 .link-list li a .page-name {
+  /* 텍스트 공간에 넓이를 줘서 공간을 띄움 */
+  width: 30rem;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+/* 원형안에 아이콘 넣기기 */
+.main .sec04 .link-list li a .page-name:after {
+  content: "";
+  display: block;
+  /* 자리 잡기 위해 */
+  position: absolute;
+  top: calc(50% - 15px);
+  right: 15px;
+  /* 원형 크기 */
+  width: 30px;
+  height: 30px;
+  border-radius: 15rem;
+  /* 12px center - 12px 가로방향 위치에서 12px 떨어짐 */
+  /* 원형 안에 아이콘을 넣고 싶다면 contain이나 cover 사용 X - 아이콘의 크기가 작아야함 */
+  background: black url(../img/link-arror-white.svg) no-repeat 12px center;
+}
+
+.main .sec04 .link-list li a .explain {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 2.8rem;
+  word-break: keep-all;
+  /* 부모 요소의 전체 너비(100%) 에서 특정한 고정 너비 (330px)를 제외한 나머지 공간을 차지 */
+  /* 330px이 page-name 300px과 padding 15px 좌우로 더해 30px 다 더하면 330px를 제외하고 나머지 공간을 차지하게 한 것 같음 */
+  /* padding이 아니라 아이콘 크기가 30px이라서 */
+  width: calc(100% - 330px);
+}
