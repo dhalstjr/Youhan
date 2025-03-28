@@ -1034,3 +1034,181 @@ a {
 .main .sec05:hover .bg {
   transform: scale(1.1);
 }
+
+/* footer 섹션  */
+#footer {
+  padding: 5rem 0;
+}
+
+#footer .wrap {
+  width: 120rem;
+}
+
+/* footer - top */
+#footer .footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 3rem;
+}
+
+#footer .footer-top .footer-logo {
+  width: 18rem;
+  height: 3.9rem;
+}
+
+#footer .footer-top .footer-logo img {
+  width: 100%;
+  height: 100%;
+}
+
+#footer .footer-top .dropdown-box {
+  position: relative;
+}
+
+#footer .footer-top .dropdown-box .link_list {
+  position: relative;
+  width: 18rem;
+}
+
+/* 드롭다운 박스 서브메뉴 */
+#footer .footer-top .dropdown-box .link_list ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+
+  width: 100%;
+  height: 14.2rem;
+  background: #e5e5e5;
+
+  /*  border-radius: 0px 0px 20px 20px; */
+  border-radius: 18px;
+
+  padding: 5px 10px;
+
+  transition: 250ms ease-in-out;
+
+  opacity: 0;
+  overflow: visible;
+}
+
+/* active 클래스 추가 */
+#footer .footer-top .dropdown-box .link_list.active ul {
+  /* 패밀리사이트 버튼이 닿는 위에 지점 보더의 라디오스를 0으로 */
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  /* 클래스 부여 시에 보이게 */
+  opacity: 1;
+
+  overflow: visible;
+}
+
+#footer .footer-top .dropdown-box .link_list ul li a {
+  color: #181818;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 300;
+
+  line-height: 2.3rem;
+  padding: 5px 0;
+}
+
+#footer .footer-top .dropdown-box .link_list .link_open {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 3.6rem;
+  background: #e5e5e5;
+  border-radius: 1.8rem;
+  box-sizing: border-box;
+
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.6rem;
+  color: black;
+
+  /* 텍스트 정렬 */
+  padding-left: 2rem;
+  text-align: left;
+}
+
+/* on클래스를 붙임 */
+#footer .footer-top .dropdown-box .link_list .link_open.on {
+  /* 서브메뉴와 맞닿는 부분에 보더 아래를 0를 줌 */
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#footer .footer-top .dropdown-box .link_list .link_open:before {
+  content: "";
+  display: block;
+  width: 1.2rem;
+  height: 0.8rem;
+  background: url(../img/arrow-black-down.svg) no-repeat center / contain;
+
+  position: absolute;
+  top: calc(50% - 3px);
+  right: 2rem;
+}
+
+/* footer - bottom */
+#footer .footer-bot {
+}
+
+#footer .footer-bot .link-box {
+  margin-bottom: 3rem;
+}
+
+#footer .footer-bot .link-box ul {
+  display: flex;
+  align-items: center;
+  color: #181818;
+}
+
+#footer .footer-bot .link-box ul li {
+  margin-right: 4rem;
+}
+
+#footer .footer-bot .link-box ul li a {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+}
+
+#footer .footer-bot .copr-info {
+  font-size: 0;
+}
+
+#footer .footer-bot .copr-info span {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+  margin-right: 2rem;
+
+  position: relative;
+}
+
+#footer .footer-bot .copr-info span::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 14px;
+  background: #d2d2d2;
+
+  position: absolute;
+  top: calc(50% - 7px);
+  right: -10px;
+}
+
+#footer .footer-bot .copr-info span:last-child {
+  margin-right: 0;
+}
+
+#footer .footer-bot .copyright {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+  margin-top: 2rem;
+}
