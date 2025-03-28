@@ -983,3 +983,54 @@ a {
   /* padding이 아니라 아이콘 크기가 30px이라서 */
   width: calc(100% - 330px);
 }
+
+/* sec05 -> 유한건강생활 섹션 */
+
+.main .sec05 {
+  /* hidden을 사용해야 scale이 커질 때 벗어나지 않음 */
+  overflow: hidden;
+  position: relative;
+}
+
+.main .sec05 a {
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.main .sec05 a .title {
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 4.2rem;
+}
+
+.main .sec05 .bg {
+  height: 50rem;
+  background: rgba(0, 0, 0, 0.4) url(../img/sec05-bg.png) no-repeat center /
+    cover;
+  background-blend-mode: multiply;
+
+  /* transform-origin 은 transform과 함께 사용하는 속성 */
+  /* transform 을 위한 기준점을 정하기 위해 선정 -> 효과가 시작되는 곳 */
+  /* 기본값은 50% 50% -center인 모양이다. */
+  transform-origin: center;
+
+  transition: 600ms ease-in-out;
+}
+
+/* 이미지 호버 시 효과 */
+/* bg:hover로 효과를 주게 되면 hover효과가 bg위를 a 태그가 가로막기 때문에 효과가 나오지 않음. */
+/* sec05 요소 자체에 hover가 되는 것. (이 디자인에는 전체를 해도 되는 것) */
+.main .sec05:hover .bg {
+  transform: scale(1.1);
+}
