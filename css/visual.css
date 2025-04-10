@@ -1,0 +1,361 @@
+@charset 'UTF-8';
+
+body {
+  line-height: 1;
+}
+
+.depth,
+.depth_list,
+.depth_item,
+.depth_text {
+  position: relative;
+}
+
+.navi-skip a {
+  position: absolute;
+  top: -100%;
+  left: 0;
+
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+
+  line-height: 2rem;
+
+  background: #181818;
+  text-align: center;
+}
+
+#header {
+  /* 헤더 스타일은 fixed */
+  position: fixed;
+  top: 0;
+  left: 50%;
+  background: transparent;
+
+  transform: translateX(-50%);
+
+  width: 100%;
+  height: 8.4rem;
+
+  z-index: 100;
+}
+
+#header::before {
+  content: "";
+  position: absolute;
+  /* 헤더의 크기만큼 px 주기 */
+  top: 84px;
+  left: calc(50% - 50vw);
+
+  width: 100vw;
+  height: 1px;
+  background-color: white;
+
+  display: block;
+}
+
+.wrap {
+  width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#header .logo-box {
+  position: relative;
+
+  z-index: 20;
+  width: 16rem;
+
+  background: transparent;
+
+  font-size: 0;
+  line-height: 0;
+}
+
+#header .logo-box .logo {
+  position: absolute;
+  top: 20px;
+  left: 0;
+
+  width: 16rem;
+  height: 6.4rem;
+
+  background: url(../img/logo-color.png) no-repeat center / contain;
+}
+
+#header .gnb .depth1 {
+  padding-left: 32rem;
+}
+#header .gnb .depth1 .depth-list1 {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 20px;
+  font-size: 0;
+  line-height: 0;
+
+  width: 96rem;
+}
+
+#header .gnb .depth1 .depth-list1 .depth-item1 {
+  width: 16rem;
+}
+
+#header .gnb .depth1 .depth-list1 .depth-item1 .depth-text1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 6rem;
+
+  /* block을 주지 않으면 text-align : center가 작동하지 않음. */
+  display: block;
+  text-align: center;
+
+  color: white;
+}
+
+#header .gnb .option {
+  position: absolute;
+  top: 30px;
+  /* wrap 오른쪽 끝에 붙어있음 right : 0 ;으로 할 시 */
+  right: 0;
+  right: 30px;
+}
+
+#header .gnb .option .language .lang_select {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.6rem;
+  color: white;
+
+  position: relative;
+
+  padding: 1rem 2rem;
+}
+
+#header .gnb .option .language .lang_select span {
+  vertical-align: middle;
+}
+/* 아이콘 */
+#header .gnb .option .language .lang_select span::after {
+  content: "";
+
+  display: inline-block;
+  width: 11px;
+  height: 7px;
+  margin-left: 8px;
+
+  background: url(../img/lang-arrow-whit.svg) no-repeat center;
+  vertical-align: middle;
+}
+
+/* 서브 메뉴 안보이게 */
+.lang-list {
+  display: none;
+}
+
+/* main sec01 - visual-slide */
+#container {
+  overflow: hidden;
+}
+.main .sec01 {
+  position: relative;
+  margin-bottom: 14.3rem;
+}
+.main .sec01 .visual-slide {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  max-height: 1080px;
+
+  background: #ff5;
+}
+
+.main .sec01 .visual-slide .text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 20;
+
+  width: 100%;
+}
+
+.main .sec01 .visual-slide .text-box .holding {
+  position: relative;
+  width: 100%;
+  /* 크기를 주지 않으면 slogan이 위로 올라가있음 */
+  height: 8rem;
+
+  background: #f5f;
+  text-align: center;
+
+  font-size: 0;
+
+  margin-bottom: 3rem;
+}
+
+.main .sec01 .visual-slide .text-box .holding .change {
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 8rem;
+  color: white;
+
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  letter-spacing: 0;
+
+  /* 효과 초기 상태*/
+  opacity: 0;
+  filter: blur(50px);
+  /* 요소의 가시성을 결정 (보이는 지 여부) */
+  visibility: hidden; /* hidden은 회면에 보이지 않음. (하지만 공간은 차지) */
+
+  /* 전환 효과 설정 */
+  transition: 1000ms ease-in-out;
+  /* 여기서 지정된 속성들만 transition 효과를 적용 */
+  /* visibility는 transition을 지원하지 않음 -> 사용한 이유는 JS애니메이션과 함께 사용될 때 포함시켜 안정성을 높이는 목적에 사용 */
+  transition-property: opacity, filter visibility;
+}
+
+/* 슬라이드 변경 시 holding 텍스트 change on 클래스 효과 */
+
+.main .sec01 .visual-slide .text-box .holding .change.on {
+  opacity: 1;
+  filter: blur(0px);
+  visibility: visible;
+}
+
+.main .sec01 .visual-slide .text-box .slogan {
+  width: 100%;
+  text-align: center;
+  background: #5ff;
+}
+
+.main .sec01 .visual-slide .text-box .slogan span {
+  font-size: 2rem;
+  font-weight: 400;
+
+  letter-spacing: 0;
+  color: white;
+}
+
+.main .sec01 .visual-slide .slide-paging {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+
+  z-index: 20;
+
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.main .sec01 .visual-slide .slide-paging li {
+  position: relative;
+  width: 14rem;
+
+  border: 1px solid #000;
+}
+.main .sec01 .visual-slide .slide-paging li button {
+  width: 100%;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 0;
+}
+
+.main .sec01 .visual-slide .slide-paging li button .btn-name {
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1.8rem;
+
+  margin-bottom: 1.4rem;
+
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.main .sec01 .visual-slide .slide-paging li button .btn-gage {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2px;
+
+  background: rgba(255, 255, 255, 0.5);
+}
+.main .sec01 .visual-slide .slide-paging li button .btn-gage .btn-bar {
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+
+  /* 게이지 효과 전 표시 */
+  display: none;
+}
+
+/* li에 active 클래스가 부여됐을 떄 스타일 */
+.main .sec01 .visual-slide .slide-paging li.active button {
+  color: white;
+}
+
+.main .sec01 .visual-slide .slide-paging li.on .btn-gage .btn-bar {
+  display: inline-block;
+  animation: slideProgress 3s forwards linear; /* forward 애니메이션 완료된 후에도 그 상태 유지 */
+}
+
+/* 애니메이션 만들어주기 */
+@keyframes slideProgress {
+  to {
+    width: 100%;
+  }
+}
+
+/* 비주얼 화면(이미지) */
+
+.main .sec01 .visual-slide .slide-item {
+  overflow: hidden;
+}
+.main .sec01 .visual-slide .slide-item .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.main .sec01 .visual-slide .slide-item .bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.main .sec01 .visual-slide .slide-item .bg::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../img/blend_main.png) repeat;
+
+  background-blend-mode: multiply;
+
+  opacity: 0.5;
+
+  z-index: 1;
+}

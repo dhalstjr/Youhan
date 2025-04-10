@@ -235,16 +235,32 @@ body {
   height: 8rem;
 }
 
-.main .sec01 .visual-slide .text-box .holding .change-on {
+.main .sec01 .visual-slide .text-box .holding .change {
   font-size: 8rem;
   font-weight: 700;
   letter-spacing: 0;
   width: 100%;
+  line-height: 8rem;
+  color: white;
 
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
-  display: block;
+
+  opacity: 0;
+  filter: blur(50px);
+  visibility: hidden;
+
+  transition: 1000ms ease-in-out;
+
+  transition-property: opacity, filter, visibility;
+}
+
+/* change에 클래스 .on이 붙었을 떄 */
+.main .sec01 .visual-slide .text-box .holding .change.on {
+  opacity: 1;
+  filter: blur(0px);
+  visibility: visible;
 }
 
 .main .sec01 .visual-slide .text-box .slogan {
@@ -308,10 +324,27 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: auto;
+  width: 0%;
   height: 100%;
   width: 0;
   background-color: white;
+
+  display: none;
+}
+
+.main .visual-slide .slide-paging li.active button {
+  color: white;
+}
+
+.main .visual-slide .slide-paging li.on .btn-gage .btn-bar {
+  display: inline-block;
+  animation: slideProgress 3s forwards linear;
+}
+
+@keyframes slideProgress {
+  to {
+    width: 100%;
+  }
 }
 
 /* swiper-wrap 메인화면 */
@@ -363,6 +396,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
 }
 
 /* main sec02 */
@@ -402,11 +436,36 @@ body {
 /* clip-path을 사용한 애니메이션 mask-type */
 /* mask-text에 before을 줘서 이미지에 텍스트를 이용해 꾸미기. */
 .main .sec02 .mask-text::before {
-  content: "YOUHANCARE";
+  content: "YUHANCARE";
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* 요소의 배경(색상이나 이미지)이 어느 부분까지 차지할 지 */
+  /* text는 요소의 배경이 텍스트까지만 차지(마스크 효과, 클리핑 효과) */
+  -webkit-background-clip: text;
+
+  /* 텍스트에 이미지 넣기 */
+  font-size: 190px;
+  font-weight: 900;
+  color: transparent;
+  white-space: nowrap; /* 줄바꿈, 공백 여부를 설정 -> nowrap을 줄바꿈이 일어나지 않음 */
+}
+
+/* 텍스트에 들어갈 이미지를 넣어준다. (클리핑 마스크.) 타입별로 */
+.main .sec02 .mask-text.type1::before {
+  background-image: url(../img/mask-type1.png);
+}
+.main .sec02 .mask-text.type2::before {
+  background-image: url(../img/mask-type2.png);
+}
+.main .sec02 .mask-text.type3::before {
+  background-image: url(../img/mask-type3.png);
 }
 
 /* 공통 CSS 만들기(보여지는 디자인) */
@@ -467,7 +526,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.main .sec02 .conbox .tab-box .brand-tab.on {
+.main .sec02 .conbox .tab-box .brand-tab.active {
   background: #181818;
   color: white;
 }
@@ -477,10 +536,13 @@ body {
   font-weight: 400;
   line-height: 2.6rem;
   margin-bottom: 4rem;
+
+  display: none;
 }
 
 /* 맨처음 보여지는 글 */
 .main .sec02 .match-box .match-text.active {
+  display: block;
 }
 
 .main .sec02 .link-box {

@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
 
-    <script src="./js/script.js"></script>
     <script src="./js/swiper-bundle.min.js"></script>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/script.js"></script>
   </head>
+
   <body>
     <div class="navi-skip">
       <a href="#container">본문 바로가기</a>
@@ -72,6 +74,8 @@
           <ul class="option">
             <li class="language">
               <button type="button" class="lang_select">
+                <!-- button 안에는 span, strong, em등을 사용하는 것이 웹 접근성 측면에서 좋다 -->
+                <!-- button 안에는 div 태그는 웹 접근성면에서 바람직 하지 않다. -->
                 <span>KOR</span>
               </button>
 
@@ -101,7 +105,7 @@
         <div class="swiper visual-slide">
           <div class="text-box">
             <div class="holding">
-              <span class="change-on">세상에 없던 원료</span>
+              <span class="change">세상에 없던 원료</span>
               <span class="change">세상을 위한 제품</span>
               <span class="change">세상을 바꾸는 기술</span>
             </div>
@@ -183,6 +187,7 @@
           건강 그 이상의 가치로 연결하고자 합니다.
         </div>
         <!-- clip-path를 이용한 배경 애니메이션 -->
+        <!-- type1, type2, type3  따로따로의 CSS를 만들어줘야 함-->
         <div class="mask-text on type1">
           <span class="zoom-circle zoom-circle1 on"></span>
           <span class="zoom-circle zoom-circle2"></span>
@@ -191,7 +196,8 @@
 
         <div class="conbox">
           <div class="tab-box">
-            <button type="button" class="brand-tab on">기업소개</button>
+            <!-- 첫 인덱스에게 active 클래스를 미리 부여해서 보이게 -->
+            <button type="button" class="brand-tab active">기업소개</button>
             <button type="button" class="brand-tab">사업소개</button>
             <button type="button" class="brand-tab">기업문화</button>
           </div>
@@ -201,8 +207,14 @@
               천연물의 과학적 연구를 토대로 고객의 삶에 새로운 의식과<br />가치
               있는 경험을 전하는 유한건강생활을 소개합니다.
             </div>
-            <div class="match-text"></div>
-            <div class="match-text"></div>
+            <div class="match-text">
+              먹고 입는 바르는 라이프 스타일의 모든 부분에서<br />
+              진정성 있는 가치와 본질에 집중하여 연구 활동을 이어 갑니다.
+            </div>
+            <div class="match-text">
+              우리는 브랜드 원칙에 공감하며 행동으로 실천합니다.<br />
+              유한건강생활의 문화와 사고의 공간을 소개합니다.
+            </div>
           </div>
           <div class="link-box">
             <a href="#">바로가기</a>

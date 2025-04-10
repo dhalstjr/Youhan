@@ -3,23 +3,188 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>visual 영역 연습</title>
+    <title>header, visual영역</title>
   </head>
+
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/common.css" />
-
+  <link rel="stylesheet" href="./css/slick.css">
   <link rel="stylesheet" href="./css/visual.css" />
+
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/slick.js"></script> 
+
+  <script src="./js/script.js"></script>
   <body>
-    <header class="header">
-      <div class="logo-box">
-        <a href="" class="logo">유한건강생활</a>
+    <!-- 본문 바로가기 내용 -->
+    <div class="navi-skip">
+      <a href="#container">본문 바로가기</a>
+    </div>
+
+    <!-- header - start -->
+    <header id="header">
+      <!-- header의 최대 크기를 위해 감싸는 wrap를 사용용 -->
+      <div class="wrap">
+        <h1 class="logo-box">
+          <a href="#" class="logo"><i class="hidden">유한건강생활</i></a>
+        </h1>
+
+        <div class="gnb">
+          <!-- gnb - nav -->
+          <div class="depth depth1">
+            <ul class="depth-list depth-list1">
+
+              <li class="depth-item depth-item1">
+                <a href="#" class="depth-text depth-text1">회사소개</a>
+                <!-- 서브메뉴 -->
+              </li>
+
+              <li class="depth-item depth-item1">
+                <a href="#" class="depth-text depth-text1">사업소개</a>
+                <!-- 서브메뉴 -->
+              </li>
+
+              <li class="depth-item depth-item1">
+                <a href="#" class="depth-text depth-text1">기업문화</a>
+                <!-- 서브메뉴 -->
+              </li>
+
+              <li class="depth-item depth-item1">
+                <a href="#" class="depth-text depth-text1">지속가능성</a>
+                <!-- 서브메뉴 -->
+              </li>
+
+              <li class="depth-item depth-item1">
+                <a href="#" class="depth-text depth-text1">미디어</a>
+                <!-- 서브메뉴 -->
+              </li>
+
+              <li class="depth-item depth-item1">
+                <a href="#" class="depth-text depth-text1">고객지원</a>
+                <!-- 서브메뉴 -->
+              </li>
+
+            </ul>
+          </div>
+
+          <!-- 언어 -->
+            <ul class="option">
+              <li class="language">
+                <button type="button" class="lang_select">
+                  <span>KOR</span>
+                </button>
+
+                <!-- 언어 서브메뉸 -->
+                <ul class="lang-list">
+                  <li>
+                    <a href="#">KOR</a>
+                  </li>
+                  
+                  <li>
+                    <a href="#">ENG</a>
+                  </li>
+                </ul>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
       </div>
     </header>
+    <!-- header - end -->
+      
+      <!-- main - start -->
+      <main id="container" class="main">
+        <section class="sec01">
 
-    <section id="main">
-      <section class="sec01">
-        <div class="visual-slide"></div>
-      </section>
-    </section>
+          <div class="swiper visual-slide">
+            <div class="text-box">
+              <div class="holding">
+                <span class="change">세상에 없던 원료</span>
+                <span class="change">세상을 위한 제품</span>
+                <span class="change">세상을 바꾸는 기술</span>
+              </div>
+              <div class="slogan">
+                <span>천연물의 가치를 발견해 건강한 생활을 만들어 갑니다.</span>
+              </div>
+            </div>
+
+            <ul class="slide-paging">
+              <li class="active on">
+                <button type="button">
+                  <span class="btn-name">
+                    01. Ingredient
+                  </span>
+                  <span class="btn-gage">
+                    <span class="btn-bar"></span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button">
+                  <span class="btn-name">
+                    02. Product
+                  </span>
+                  <span class="btn-gage">
+                    <span class="btn-bar"></span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button">
+                  <span class="btn-name">
+                    03. Technology
+                  </span>
+                  <span class="btn-gage">
+                    <span class="btn-bar"></span>
+                  </span>
+                </button>
+              </li>
+            </ul>
+
+            <div class="swiper-wrapper">
+              <div class="slide-item swiper-slide">
+                <div class="bg">
+                  <img src="./img/visual_img1.png" alt="메인 화면1">
+                </div>
+              </div>
+
+              <div class="slide-item swiper-slide">
+                <div class="bg">
+                  <img src="./img/visual_img2.png" alt="메인 화면2">
+                </div>
+              </div>
+
+              <div class="slide-item swiper-slide">
+                <div class="bg">
+                  <img src="./img/visual_img3.png" alt="메인 화면3">
+                </div>
+              </div>
+            </div>
+            <div class="scrolling">
+              SCROLL
+              <span class="gage">
+                <span class="gage-bar"></span>
+              </span>
+            </div>
+
+          </div>
+        </section>
+        
+        <section class="sec02"></section>
+        <section class="sec03"></section>
+        <section class="sec04"></section>
+        <section class="sec05"></section>
+      </main>
+      <!-- main - end -->
+
+      <!-- footer - start -->
+       <footer id="footer">
+        
+       </footer>
+      <!-- footer - end -->
   </body>
 </html>
