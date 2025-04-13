@@ -1418,3 +1418,29 @@ a {
 .gnb-open .depth2 .depth_list2 .depth_text2:hover {
   color: #008e43;
 }
+
+/* 헤더 스크롤 위치에 따른 애니메이션 동작 */
+/* 스크롤이 맨 위가 아니었을 때 */
+body[data-top="no-top"] #header {
+  background-color: rgba(18, 18, 18, 0.9);
+}
+
+body[data-top="no-top"] #header .logo-box .logo {
+  background-image: url(../img/logo-color-open.png);
+}
+
+/* gnb-open에 클래스를 가진 상태에서 no-top에 header */
+.gnb-open body[data-top="no-top"] #header {
+  background-color: transparent;
+}
+
+/* 스크롤 이벤트에 따라 바뀌는 애니메이션 */
+/* scroll-down 클래스가 붙었을 떄 */
+.scroll-down #header {
+  top: -85px;
+}
+
+/* 스크롤이 내려갔을 때 gnb에 hover 했을 때 header 부분이 사라지지 않도록 하기위해서 0을 줌 */
+.scroll-down.gnb-open #header {
+  top: 0;
+}

@@ -248,8 +248,84 @@ $(function () {
       }
     })
     .on("mouseleave", function () {
+      // mouseleave와 mouseout의 차이점은 mouseleave는 자식 요소를 포함하여 유지.
+      // mouseout은 자식 요소를 포함하지 않아 자식 요소에 들어가게 되면 서브 메뉴가 사라진다.
       if (window.innerWidth > 1200) {
         $("html").removeClass("gnb-open");
       }
     });
+
+  // 스크롤 위치에 따라b body에 속성(data-top)을 다르게 주는 코드
+
+  // 1. 현재 위치의 스크롤 값을 구하기 (스크롤 값이 맨 위를 찾기 위해서.)
+  // Jquery에서 사용하는 방식 (window).scrollTop()
+  // javascript는 addEventListener("scroll" , function(){})
+  var thisTop = $(document).scrollTop();
+  // 현재 스크롤 값이 0보다 클 때
+  if (thisTop > 0) {
+    // 스크롤이 내려가있다면 data-top = no-top 속성 부여
+    // 헤더 색상, 버튼 위치, 애니메이션등 스크롤 여부에 따라 스타일 제어에 사용
+    $("body").attr("data-top", "no-top");
+  }
+  console.log(thisTop);
+
+  // 2. 스크롤 이벤트
+  // 사용자가 스크롤할 때마다 이벤트가 발생.
+
+  // 실수로 "window"로 해서 안먹음 (유의사항.)
+  const CHH = $(window).scroll(function () {
+    thisTop = $(document).scrollTop();
+
+    if (thisTop > 0) {
+      // 스크롤이 맨 위에 있지않고 조금이라도 내려가있다면 no-top
+      $("body").attr("data-top", "no-top");
+    } else {
+      // 스크롤이 맨위에 위치한다면 top
+      $("body").attr("data-top", "top");
+    }
+
+    console.log(CHH);
+  });
+
+  // 스크롤 업다운에 따른 변화.
+  // 1. 변수를 선언 -> 두 변수의 차이를 이용해 스크롤 방향을 판단.
+  let nowScrollTop = 0, //nowScrollTop = 현재 스크롤 위치를 저장하는 변수
+    prevScrollTop = 0; // prevScrollTop = 이전 스크롤 위치릴 저장하는 변수
+
+  // 2.스크롤 방향 판단 함수
+  let wheelMove = function () {
+    // return는 함수가 실행될 때 결과값을 반환하는 명령어
+    // 이 함수는 결과값이 'up' , 'down' 이 있기 때문에 둘 중 하나만 결과값으로 반환한다.
+    // ?는 심향 연산자를 말한다.
+    // 삼향 연산자는 (조건식 ? A : B) if-else 문법을 짧게 쓴 문법이다.
+    // 참이면 up 거짓이면 down 으로 둘 중 하나로 결과값이 도출된다.
+    // 이 함수는 이전 스크롤 값과 현재 스크롤 값을 비교하여
+    // 즉 이전 위치가 현재보다 크면 -> 스크롤이 위로 올라간 것이므로 'up' 을 반횐
+    // prevScrollTop(300) - nowScrollTop(100) = +200 이므로 결과값이 +이므로 스크롤이 올라간 것을 의미한다.
+    return prevScrollTop - nowScrollTop > 0 ? "up" : "down";
+  };
+
+  // 3.스크롤 핸들러 이벤트 실행
+  $(window).scroll(function () {
+    // 스크롤이 맨 위(0)가 아닐 때만 동작하도록 설정.
+    if ($(document).scrollTop() > 0) {
+      nowScrollTop = $(document /* this도 가능 */).scrollTop(); // 현재 위치를 저장
+
+      // 스크롤 방향 판단하여 클래스 부여 및 제거
+      // wheelMove() 함수를 통해 스크롤 방향을 판단.
+      if (wheelMove() === "up") {
+        // 스크롤 방향이 "up" 이면 사용자가 위로 스크롤한다면 "scroll-down" 클래스 제거
+        $("html").removeClass("scroll-down");
+      } else {
+        // 스크롤 방향이 "down" 이면 사용자가 아래로 스크롤했기에 "scroll-down" 클래스 부여
+        $("html").addClass("scroll-down");
+      }
+
+      prevScrollTop = nowScrollTop;
+      console.log(nowScrollTop, prevScrollTop); // 스크롤시 콘솔창에 나타남.
+    } else {
+      // 스크롤이 맨 위(0)라면 "scroll-down" 클래스 제거
+      $("html").removeClass("scroll-down");
+    }
+  });
 });
