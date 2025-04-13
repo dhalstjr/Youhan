@@ -234,4 +234,22 @@ $(function () {
   // lang의 변수 html태그 안에 lang 속성
   let lang = $("html").attr("lang");
   console.log(lang);
+
+  //pc의 header 서브메뉴 펼치기(gnb-open)
+  // Jquery -> mouseenter는 hover 효과임 but 자식 요소는 감지 하지않음.
+  $("#header")
+    .on("mouseenter", function () {
+      // innerWidth는 픽셀로 창 내부의 너비를  반환(스크롤 막대 포함)
+      // outerWidth는 창의 두께까지 포함한 너비(스크롤 포함)
+      // 1200px 이상일 때 gnb-open 클래스를 가진다. 이하일 떄는 클래스를 가지지 않는다.
+      if (window.innerWidth > 1200) {
+        // addClass할 때는 .을 사용하지 않는다.
+        $("html").addClass("gnb-open");
+      }
+    })
+    .on("mouseleave", function () {
+      if (window.innerWidth > 1200) {
+        $("html").removeClass("gnb-open");
+      }
+    });
 });

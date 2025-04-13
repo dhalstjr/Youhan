@@ -86,10 +86,6 @@ br {
   --clientWidth: 100vw;
 }
 
-.match-text {
-  /*   display: none; */
-}
-
 button {
   cursor: pointer;
   margin: 0;
