@@ -199,17 +199,16 @@ body {
 }
 
 .main .sec01 {
-  padding-bottom: 14.3rem;
   position: relative;
+  padding-bottom: 14.3rem;
 }
 
 .main .sec01 .visual-slide {
   /* 화면에 맞게 설정 */
+  position: relative;
   height: 100vh;
   min-height: 70rem;
   max-height: 108rem;
-
-  position: relative;
 
   background: #5f5;
 }
@@ -230,6 +229,11 @@ body {
   text-align: center;
 
   color: white;
+
+  /* allowTouchMove: true 가 저 밑에 코드가 없으면 안먹는다.  */
+  /* text-box가 슬라이드 위에 겹쳐 있는 레이어로 작동하여 터치(또는 마우스 드래그) 이벤트 가로채기 때문에  */
+  /* 즉 text-box가 슬라이드를 가로 막고 있어서 작동되지 않았다. */
+  pointer-events: none;
 }
 
 .main .sec01 .visual-slide .text-box .holding {
@@ -363,6 +367,11 @@ body {
   height: 100%;
 }
 
+/* overflow-hidden 을 사용하면 bg의 img가 잘리지 않고 한 화면에 꽉 차게 들어옴 */
+.main .sec01 .visual-slide .slide_item {
+  overflow: hidden;
+}
+
 /* 이미지 명도 낮추기 */
 /* 내가 사용하는 방법 */
 /* .main .sec01 .visual-slide .slide_item .bg:after {
@@ -381,8 +390,8 @@ body {
 /* 본페이지에서 사용하는 방식 */
 .main .sec01 .visual-slide .slide_item .bg::after {
   content: "";
-  position: absolute;
   display: block;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -398,11 +407,11 @@ body {
   opacity: 0.5;
 }
 
-.main .sec01 .visual-slide .slide_item img {
+.main .sec01 .visual-slide .slide_item .bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center bottom;
 }
 
 /* main sec02 */

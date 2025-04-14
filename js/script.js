@@ -4,7 +4,7 @@ $(function () {
     speed: 1000, // 슬라이드 전환 속도
     allowTouchMove: true, // 사용자가 마우스 또는 손가락으로 슬라이드할 수 있게 허용
     loop: true, // 슬라이프가 마지막에 도달해도 다시 처음으로 돌아가면서 무한반복
-    loopAdditionalSlides: 1, // 루프 기능에서 추가 슬라이드를 만들어 원활한 루프 보장
+    loopAdditionalSlides: 0, // 루프 기능에서 추가 슬라이드를 만들어 원활한 루프 보장
     watchSlidesProgress: true, // 슬라이드 진행 상태를 추적
     mousewheel: false, // 마우스 휠로 슬라이드를 이동하지 않게 설정
     autoplay: {
