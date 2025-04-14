@@ -101,95 +101,8 @@ body {
   padding-left: 32rem;
 }
 
-.depth1 .depth1-list {
-  display: flex;
-  width: 96rem;
-  padding-top: 2rem;
-  justify-content: center;
-
-  /* display : flex 를 사용했지만 내부 요소들이 inline-block 요소를 가지고 있다면 */
-  /* font-size에 의해 공백이 생길 수가 있음. 그래서 0으로 설정하면 공백이 제거되면서 요소들이 정확하게 배치 */
-  /* gnb(depth_item1) 들이 예상보다 더 벌어지는 문제를 방지할 수 있음.*/
-  font-size: 0; /* 요소 간 공백 제거 */
-  line-height: 0; /* 불필요한 세로 여백 제거 */
-}
-
-.depth1 .depth1-list .depth_item1 {
-  width: 16rem;
-
-  position: relative; /* 서브메뉴들의 부모가 되기 위한  */
-  vertical-align: top;
-}
-
-.depth1 .depth1-list .depth_text1 {
-  display: block; /* display : block 을 줘야 text가 center로 간다 이유는 block을 줘야 자신만의 공간을 갖기 떄문인 것 같다. */
-  font-size: 2rem;
-  color: #000;
-
-  text-align: center;
-  line-height: 6.4rem;
-  color: white;
-  transition: 250ms;
-}
-
 .depth1 .depth1-list .depth_text1:hover {
   font-weight: 700;
-}
-
-.option {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-}
-
-.option .language .lang_select {
-  position: relative;
-  border: none;
-  font-size: 1.6rem;
-  color: white;
-
-  /* 버튼 크기를 위한 padding */
-  padding: 1rem 2rem;
-
-  vertical-align: middle;
-}
-/* 버튼 옆 아이콘 */
-.option .language .lang_select::after {
-  content: "";
-  display: inline-block;
-  width: 11px;
-  height: 7px;
-
-  margin-left: 4px;
-  background-image: url(../img/lang_arrow.svg);
-  background-repeat: no-repeat;
-
-  background-size: contain;
-
-  vertical-align: middle;
-}
-
-/* 언어 메뉴 서브메뉴 */
-.option .language .lang_list {
-  position: absolute;
-  width: 100%;
-
-  background-color: rgba(255, 255, 255, 0.7);
-
-  /* 하위 메뉴 보이지 않게 */
-  visibility: hidden;
-  opacity: 0;
-}
-
-.option .language .lang_list a {
-  display: block;
-  width: 100%;
-
-  text-align: center;
-  font-size: 1.6rem;
-  color: #717171;
-
-  padding: 5px 10px;
 }
 
 /* main */
@@ -1294,144 +1207,6 @@ a {
   margin-top: 2rem;
 }
 
-/* 헤더의 서브메뉴 */
-
-.gnb-open .depth1:before,
-.gnb-open .depth1:after {
-  display: block;
-}
-
-/* hover시에 헤더 색 변경하기 위한 것으로 보임 */
-/* depth1의 전체 높이를 채우는 배경 레이어 (서브 메뉴가 떨어졌을 떄 채우는 배경) */
-/* height : 100%는 depth1의 원래 높이까지만 적용 */
-.depth1:before {
-  content: "";
-  position: absolute;
-  top: 0;
-
-  /* 중앙 정렬 방법 */
-  left: calc(50% - 50vw);
-  width: 100vw;
-  /* 중앙 정렬 방법 */
-
-  height: 100%;
-  background-color: rgba(18, 18, 18, 0.9);
-  display: none;
-}
-
-/* hover시 나오는 서브메뉴의 선 */
-.depth1::after {
-  content: "";
-  position: absolute;
-
-  top: 0;
-
-  /* 띄워서 잘 사용해야함. */
-  left: calc(50% - 50vw);
-  /* 띄워서 잘 사용해야함. */
-  width: 100vw;
-  height: 1px;
-
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-/* hover시에 나오는 선 */
-.depth1 .depth1-list .depth_item1::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 63px;
-  z-index: 1;
-  width: 100%;
-  height: 3px;
-  background-color: #008e43;
-
-  /* hover 시 중앙에서 양쪽으로 선이 펼쳐지는 듯한 애니메이션을 만드는 기법 */
-  /* transform rotateY(90deg)는 해당 요소를 Y축을 기준으로 90도를 회전시켜 정면에서 보이지 않도록 숨기는 효과를 준다. */
-  /* rotateY(90deg)는  측면만 보이게 되어 실제로 선이 사라진 것 처럼 보인다. */
-  /* 기본값이 center이기 때문에 중앙에서 나오는 듯한 느낌을 준다. */
-  transform: rotateY(90deg);
-  transition: 250ms ease-in-out;
-}
-
-.depth1 .depth1-list .depth_item1:hover::after {
-  /* rotateY(0deg)로 되면서 정면으로 이동.*/
-  transform: rotateY(0deg);
-}
-
-/* 서브메뉴 depth2 */
-.depth2 {
-  /* absolute는 부모 높이 계산에 포함되지 않음. */
-  /* 그래서 depth1의 height는 자식 요소인 .depth2를 고려하지 않음. */
-  position: absolute;
-  width: 100%;
-  /* 저거를 사용하면 헤더의 선에 딱 알맞게 걸친다. */
-  height: calc(100% - 64px);
-
-  background: #55f;
-  visibility: hidden;
-  opacity: 0;
-
-  /* 메뉴의 경계선 */
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-
-  transition: opacity 250ms ease-in-out;
-}
-
-/* 마지막 오른쪽 메뉴 border 추가 */
-.depth1 .depth1-list .depth_item1:last-child .depth2 {
-  border-right: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.depth2 .depth_list2 {
-  padding: 24px 20px;
-  /*   background: #5ff; */
-}
-
-.depth2 .depth_list2 .depth_text2 {
-  display: block;
-  font-size: 1.6rem;
-  color: white;
-  border: 1px solid #000;
-
-  /* 오픈했을 떄로 이동 지금은 보이게 하기 위해서 */
-  /*   padding: 10px 0;
-  line-height: 1; */
-
-  /* 여기에는 저 오픈했을 때 자연스럽게 하기 위한 트랜지션 */
-  transition: 250ms ease-in-out;
-  transition-property: line-height, padding;
-}
-
-/* gnb가 hover 됐을 떄 효과 */
-
-/* 로고 이미지 변경 */
-.gnb-open #header .logo-box .logo {
-  background-image: url(../img/logo-color-open.png);
-}
-
-/* 그래서 gnb-open 클래스를 가질 때 relative가 적용이 되면 depth2가 부모 요소인 depth1에 포함된다. */
-
-.gnb-open .depth2 {
-  visibility: visible;
-  /* gnb-open이 아닐 때 absolute를 풀어줘야 header에 검은색 배경이 height를 포함한다. */
-  /* **depth2는ㄴ 서브메뉴이고 position absolute로 설정되어있음 depth1은 상위 메뉴  */
-  /* .depth1:before가 depth1의 전체 높이를 채우는 반투명 배경의 레이어 */
-  position: relative;
-  opacity: 1;
-}
-
-.gnb-open .depth2 .depth_list2 .depth_text2 {
-  /* 텍스트 높이 간격 설정 */
-  padding: 10px 0;
-  line-height: 1;
-}
-
-/* 텍스트 호버 효괴 */
-.gnb-open .depth2 .depth_list2 .depth_text2:hover {
-  color: #008e43;
-}
-
 /* 헤더 스크롤 위치에 따른 애니메이션 동작 */
 /* 스크롤이 맨 위가 아니었을 때 */
 body[data-top="no-top"] #header {
@@ -1465,4 +1240,290 @@ body[data-top="no-top"] #header .logo-box .logo {
 
 #footer .footer-top .dropdown-box .link_list ul li a:hover {
   font-weight: 700;
+}
+
+/* 모바일 탑 메뉴 만들기 */
+#haader .menu-open {
+}
+
+/* 미디어 쿼리 형성(반응형)  */
+/* min-width는 위에 먼저 명령이 되어있으면 그 값을 우선으로 한다. */
+/* 이유는 min-width는 작은 가로폭 그러니까 모바일부터 시작해서 데스크탑으로 구현한다고 생각하면 한다. */
+/* 항상 데스크탑으로 만들어서 헷갈린 부분인 것 같다. */
+/* max-width는 점점 폭이 작아지는 것으로 예를 들어 1600px -> 1024px -> 768px 이런식으로 작아지면서 설정하기 때문에 */
+/* media (max-width : )은 큰 값부터 차례대로 명령을 실행한다. */
+/* 그러나 min-width는 점점 가로폭이 커져가는 것으로 768px -> 1024px -> 1600px */
+/* 작은 값부터 차례대로 명령을 실행한다. 그러므로 max-width와 반대로 생각하면 된다. */
+/* 작은 가로폭부터 큰 가로폭 순서로 만드는 것이기에 작은 가로폭부터 조건에 부합한다. */
+/* 헷갈리지 않고 당황하지 말자. */
+
+@media screen and (min-width: 1201px) {
+  /* depth 스타일 이쪽으로 이동 */
+  .depth1 {
+    padding-left: 18rem;
+  }
+  .depth1 .depth1-list {
+    display: flex;
+    width: 96rem;
+    padding-top: 2rem;
+    justify-content: center;
+
+    /* display : flex 를 사용했지만 내부 요소들이 inline-block 요소를 가지고 있다면 */
+    /* font-size에 의해 공백이 생길 수가 있음. 그래서 0으로 설정하면 공백이 제거되면서 요소들이 정확하게 배치 */
+    /* gnb(depth_item1) 들이 예상보다 더 벌어지는 문제를 방지할 수 있음.*/
+    font-size: 0; /* 요소 간 공백 제거 */
+    line-height: 0; /* 불필요한 세로 여백 제거 */
+  }
+
+  /* 140px을 주지 않아도 140px로 되지만 공간을 초과하기에 넓이를 조절한다. */
+  /*   .depth1 .depth1-list .depth_item1 {
+    width: 14rem;
+  } */
+  .depth1 .depth1-list .depth_item1 {
+    width: 14rem;
+
+    position: relative; /* 서브메뉴들의 부모가 되기 위한  */
+    vertical-align: top;
+  }
+
+  .depth1 .depth1-list .depth_text1 {
+    display: block; /* display : block 을 줘야 text가 center로 간다 이유는 block을 줘야 자신만의 공간을 갖기 떄문인 것 같다. */
+    font-size: 2rem;
+    color: #000;
+
+    text-align: center;
+    line-height: 6.4rem;
+    color: white;
+    transition: 250ms;
+  }
+
+  /* 서브메뉴 depth2 */
+  .depth2 {
+    /* absolute는 부모 높이 계산에 포함되지 않음. */
+    /* 그래서 depth1의 height는 자식 요소인 .depth2를 고려하지 않음. */
+    position: absolute;
+    width: 100%;
+    /* 저거를 사용하면 헤더의 선에 딱 알맞게 걸친다. */
+    height: calc(100% - 64px);
+
+    background: #55f;
+    visibility: hidden;
+    opacity: 0;
+
+    /* 메뉴의 경계선 */
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+
+    transition: opacity 250ms ease-in-out;
+  }
+
+  .depth2 .depth_list2 {
+    padding: 24px 20px;
+    /*   background: #5ff; */
+  }
+
+  .depth2 .depth_list2 .depth_text2 {
+    display: block;
+    font-size: 1.6rem;
+    color: white;
+    border: 1px solid #000;
+
+    /* 오픈했을 떄로 이동 지금은 보이게 하기 위해서 */
+    /*   padding: 10px 0;
+    line-height: 1; */
+
+    /* 여기에는 저 오픈했을 때 자연스럽게 하기 위한 트랜지션 */
+    transition: 250ms ease-in-out;
+    transition-property: line-height, padding;
+  }
+
+  /* hover시에 나오는 선 */
+  .depth1 .depth1-list .depth_item1::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 63px;
+    z-index: 1;
+    width: 100%;
+    height: 3px;
+    background-color: #008e43;
+
+    /* hover 시 중앙에서 양쪽으로 선이 펼쳐지는 듯한 애니메이션을 만드는 기법 */
+    /* transform rotateY(90deg)는 해당 요소를 Y축을 기준으로 90도를 회전시켜 정면에서 보이지 않도록 숨기는 효과를 준다. */
+    /* rotateY(90deg)는  측면만 보이게 되어 실제로 선이 사라진 것 처럼 보인다. */
+    /* 기본값이 center이기 때문에 중앙에서 나오는 듯한 느낌을 준다. */
+    transform: rotateY(90deg);
+    transition: 250ms ease-in-out;
+  }
+
+  .option {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+
+  .option .language .lang_select {
+    position: relative;
+    border: none;
+    font-size: 1.6rem;
+    color: white;
+
+    /* 버튼 크기를 위한 padding */
+    padding: 1rem 2rem;
+
+    vertical-align: middle;
+  }
+
+  /* 버튼 옆 아이콘 */
+  .option .language .lang_select::after {
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+
+    margin-left: 4px;
+    background-image: url(../img/lang_arrow.svg);
+    background-repeat: no-repeat;
+
+    background-size: contain;
+
+    vertical-align: middle;
+  }
+
+  /* 언어 메뉴 서브메뉴 */
+  .option .language .lang_list {
+    position: absolute;
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 0.7);
+
+    /* 하위 메뉴 보이지 않게 */
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .option .language .lang_list a {
+    display: block;
+    width: 100%;
+
+    text-align: center;
+    font-size: 1.6rem;
+    color: #717171;
+
+    padding: 5px 10px;
+  }
+
+  /* 헤더의 서브메뉴 */
+
+  .gnb-open .depth1:before,
+  .gnb-open .depth1:after {
+    display: block;
+  }
+
+  /* hover시에 헤더 색 변경하기 위한 것으로 보임 */
+  /* depth1의 전체 높이를 채우는 배경 레이어 (서브 메뉴가 떨어졌을 떄 채우는 배경) */
+  /* height : 100%는 depth1의 원래 높이까지만 적용 */
+  .depth1:before {
+    content: "";
+    position: absolute;
+    top: 0;
+
+    /* 중앙 정렬 방법 */
+    left: calc(50% - 50vw);
+    width: 100vw;
+    /* 중앙 정렬 방법 */
+
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.9);
+    display: none;
+  }
+
+  /* hover시 나오는 서브메뉴의 선 */
+  .depth1::after {
+    content: "";
+    position: absolute;
+
+    top: 0;
+
+    /* 띄워서 잘 사용해야함. */
+    left: calc(50% - 50vw);
+    /* 띄워서 잘 사용해야함. */
+    width: 100vw;
+    height: 1px;
+
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .depth1 .depth1-list .depth_item1:hover::after {
+    /* rotateY(0deg)로 되면서 정면으로 이동.*/
+    transform: rotateY(0deg);
+  }
+
+  /* 마지막 오른쪽 메뉴 border 추가 */
+  .depth1 .depth1-list .depth_item1:last-child .depth2 {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* gnb가 hover 됐을 떄 효과 */
+
+  /* 로고 이미지 변경 */
+  .gnb-open #header .logo-box .logo {
+    background-image: url(../img/logo-color-open.png);
+  }
+
+  /* 그래서 gnb-open 클래스를 가질 때 relative가 적용이 되면 depth2가 부모 요소인 depth1에 포함된다. */
+
+  .gnb-open .depth2 {
+    visibility: visible;
+    /* gnb-open이 아닐 때 absolute를 풀어줘야 header에 검은색 배경이 height를 포함한다. */
+    /* **depth2는ㄴ 서브메뉴이고 position absolute로 설정되어있음 depth1은 상위 메뉴  */
+    /* .depth1:before가 depth1의 전체 높이를 채우는 반투명 배경의 레이어 */
+    position: relative;
+    opacity: 1;
+  }
+
+  .gnb-open .depth2 .depth_list2 .depth_text2 {
+    /* 텍스트 높이 간격 설정 */
+    padding: 10px 0;
+    line-height: 1;
+  }
+
+  /* 텍스트 호버 효괴 */
+  .gnb-open .depth2 .depth_list2 .depth_text2:hover {
+    color: #008e43;
+  }
+}
+
+/* 최대 넓이가 1601px이상 일 때 실행 */
+@media screen and (min-width: 1601px) {
+  /* 지금 본페이지와 다른 점은 header부분에 depth1 에 padding-left를 줬을 때 다름 */
+  /* 문제점 파악하기. */
+  .depth1 {
+    padding-left: 32rem;
+  }
+
+  .depth1 .depth1-list {
+    width: 96rem;
+  }
+
+  .depth1 .depth1-list .depth_item1 {
+    width: 16rem;
+  }
+}
+
+/* 최대 넓이가 1600px이하일 때 실행.  */
+/* 쉽게 말해 1600px이상 넘으면 구현되지 않음. */
+@media screen and (max-width: 1600px) {
+  /* header의 반응형을 위한 wrap  */
+  .wrap {
+    width: 120rem;
+  }
+}
+
+/* 본페이지는 min-width: 1200px에 스타일 구현 */
+@media screen and (max-width: 1200px) {
+  /*   .depth1 .depth1-list .depth_item1 {
+    display: none;
+  } */
+
+  /* 모바일 탭 메뉴 만들기 */
 }

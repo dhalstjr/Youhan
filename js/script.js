@@ -4,14 +4,21 @@ $(function () {
     speed: 1000, // 슬라이드 전환 속도
     allowTouchMove: true, // 사용자가 마우스 또는 손가락으로 슬라이드할 수 있게 허용
     loop: true, // 슬라이프가 마지막에 도달해도 다시 처음으로 돌아가면서 무한반복
+
+    // loopAdditionalSlides : 1을 줬을 때 슬라이드가 사라지는 현상이 발생하는 이유
+    // loopAdditionalSlides는 슬라이드 앞 뒤에 복제 슬라이드를 몇 개를 추가할 지 결정하는 옵션인데
+    // 근데 이미지가 비동기 로딩이거나, CSS/JS와 함께 렌더링 타이밍이 안 맞으면 복제 슬라이드가 렌더링 되지않거나 비어 보이는 현상이 발생한다
+    // 이로 인해 '슬라이드 하나가 사라진 것처럼' 보이는 문제가 생기는 거예요.
+    // 슬라이드 개수가 적을 때(예 : 3개)는 loopAdditionalSlides를 줄이거나 0으로 하는 것이 안정적이다.
+    // loopAdditionalSlides는 보통 슬라이드 5개 이상일 때 사용하는 것이 적당하다.
     loopAdditionalSlides: 0, // 루프 기능에서 추가 슬라이드를 만들어 원활한 루프 보장
     watchSlidesProgress: true, // 슬라이드 진행 상태를 추적
     mousewheel: false, // 마우스 휠로 슬라이드를 이동하지 않게 설정
-    autoplay: {
+    /*     autoplay: {
       delay: 3000,
       disableOnInteraction: false, // 사용자가 슬라이드를 터치해도 자동 재생을 멈추지 않음
     },
-
+ */
     // 이벤트 처리 (on 옵션)
     on: {
       /* progress 이벤트 */

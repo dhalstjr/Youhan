@@ -62,7 +62,7 @@ br {
 }
 
 .ellipsis {
-  -webkit-line-clamp: 2;
+  -webkit-e-clamp: 2;
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-box-orient: vertical;
