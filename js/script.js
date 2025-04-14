@@ -328,4 +328,13 @@ $(function () {
       $("html").removeClass("scroll-down");
     }
   });
+
+  /* 패밀리 사이트 메뉴 */
+  $(".link_open").on("click", function () {
+    if ($(this).hasClass("on")) {
+      $(this).removeClass("on").siblings("ul").removeClass("active");
+    } else {
+      $(this).addClass("on").siblings("ul").addClass("active");
+    }
+  });
 });

@@ -1163,7 +1163,7 @@ a {
 }
 
 /* active 클래스 추가 */
-#footer .footer-top .dropdown-box .link_list.active ul {
+#footer .footer-top .dropdown-box .link_list ul.active {
   /* 패밀리사이트 버튼이 닿는 위에 지점 보더의 라디오스를 0으로 */
   border-top-right-radius: 0;
   border-top-left-radius: 0;
@@ -1200,6 +1200,8 @@ a {
   /* 텍스트 정렬 */
   padding-left: 2rem;
   text-align: left;
+
+  transition: 250ms ease-in-out;
 }
 
 /* on클래스를 붙임 */
@@ -1219,6 +1221,8 @@ a {
   position: absolute;
   top: calc(50% - 3px);
   right: 2rem;
+
+  transition: 250ms ease-in-out;
 }
 
 /* footer - bottom */
@@ -1443,4 +1447,13 @@ body[data-top="no-top"] #header .logo-box .logo {
 /* 스크롤이 내려갔을 때 gnb에 hover 했을 때 header 부분이 사라지지 않도록 하기위해서 0을 줌 */
 .scroll-down.gnb-open #header {
   top: 0;
+}
+
+/* 패밀리 사이트 애니메이션 변화 */
+#footer .footer-top .dropdown-box .link_list .link_open.on:before {
+  transform: scaleY(-1);
+}
+
+#footer .footer-top .dropdown-box .link_list ul li a:hover {
+  font-weight: 700;
 }
