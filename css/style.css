@@ -39,7 +39,7 @@ body {
   left: calc(50% - 50vw);
   width: 100vw;
   height: 1px;
-  background-color: #fff;
+  background-color: rgba(34, 34, 34, 0.1);
 }
 
 /* 넓이를 주기 위해서 한 것 같음 */
@@ -94,15 +94,6 @@ body {
 .depth_item,
 .depth_text {
   position: relative;
-}
-
-/* depth1 CSS */
-.depth1 {
-  padding-left: 32rem;
-}
-
-.depth1 .depth1-list .depth_text1:hover {
-  font-weight: 700;
 }
 
 /* main */
@@ -1508,6 +1499,10 @@ body[data-top="no-top"] #header .logo-box .logo {
   .depth1 .depth1-list .depth_item1 {
     width: 16rem;
   }
+
+  .depth1 .depth1-list .depth_text1:hover {
+    font-weight: 700;
+  }
 }
 
 /* 최대 넓이가 1600px이하일 때 실행.  */
@@ -1525,5 +1520,181 @@ body[data-top="no-top"] #header .logo-box .logo {
     display: none;
   } */
 
-  /* 모바일 탭 메뉴 만들기 */
+  .wrap {
+    width: 94vw;
+  }
+
+  /* 헤더  */
+  #header {
+    height: 64px;
+  }
+
+  #header::before {
+    top: 64px;
+  }
+
+  #header .logo-box .logo {
+    /* 위치를 지정하지 않을 때 사용하는 기본값 */
+    /* 요소들이 HTML에 작성된 순서 그대로 브라우저 화면에 표시된다. top, left, 같은 속성이 적용되지 않음. */
+    /* 처음 .logo는 absolute를 가지고 있었는데. 절대적인 요소에서 top과 lett와 같이  */
+    /* 위치를 조정해주는 코드가 있었기 때문에 header 높이가 변하여 .logo의 위치가 틀어졌을 것이다. */
+    /* 그래서 position : static을 통해 높이를 맞추고 일반적인 흐름을 따라간 것으로 보인다 */
+    /* 그리고 탭메뉴의 아이콘이 나오기 때문에 그것괴도 연관되서 이유가 있을 것으로 보인다. */
+    /* 그냥 absolute인 상황에서 top만 0으로 바꿔주면 위치가 맞지만 탭메뉴 아이콘 연동되는 것 때문에 사용하지 않은 것으로 보인다. */
+    position: static;
+  }
+
+  /* 모바일 탭 메뉴 만들기  */
+  .menu-open {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    background: #f5f url(../img/menu-open.png) no-repeat center / contain;
+    position: absolute;
+    /* 이게 중간으로 가는 이유는 wrap에 depth1에 관련된 것들이 wrap과 떨어지기 때문에 */
+    /* 크기를 갖지 않고 wrap은 header의 크기만을 가져버리기 때문에  */
+    /* 지금은 depth1이 포함된 wrap에 50%을 가지면 그 크기의 중간에 있기 때문에 한참 떨어져 있는 것 처럼 보일 것이다. */
+    top: calc(50% - 15px);
+    right: 0;
+    font-size: 0;
+  }
+
+  /* 서브메뉴 탭 스타일을 만들기 */
+  .gnb {
+    /* .gnb의 fixed를 주게 되면 menu-open의 아이콘이 자리를 정상적으로 잡을 수 있게 된다. */
+    /* position : fixed도 절대요소 중 하나이기 때문에 HTML문서의 흐름을 따라가지 않게 된다. */
+    position: fixed;
+    z-index: 10;
+    top: 64px;
+    right: 0;
+    width: 45rem;
+    /* 100vh 뷰포트 높이가 화면에 꽉 차게 */
+    height: 100vh;
+
+    background: #181818;
+  }
+
+  /* 서브메뉴 탭이 활성화됐을 때 화면처리 */
+  .gnb-curtain {
+    display: block;
+    /* absolute를 사용하게 돠면 wrap에 relative가 있기 때문에 화면을 꽉차지 못하게 된다. */
+    /* 그래서 fixed을 활용해 부모 요소 관계없이 브라우저 화면의 상대 위치를 기준으로 단독으로 절대 요소를 가지게 된다. */
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  /* 서브메뉴의 탭에 top부분 */
+  .gnb-top {
+    display: block;
+    /* 이것도 fixed를 활용해야 단독으로 행동한다. */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 45rem;
+    height: 64px;
+    background: #181818;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+  }
+
+  /* 탭메뉴의 아이콘과 닫기 버튼 */
+  .gnb .gnb-top .logo-box .logo_inner-type {
+    display: block;
+    width: 16rem;
+    height: 64px;
+    background: url(../img/logo-color-open.png) no-repeat center / contain;
+  }
+
+  .gnb .gnb-top .menu-close {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    background: url(../img/menu-close.png) no-repeat center / contain;
+
+    font-size: 0;
+    color: transparent;
+  }
+
+  /* 서브 탭메뉴의 메뉴들 */
+  .depth1 .depth1-list .depth_text1 {
+    display: block;
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+  }
+
+  /* 탭메뉴의 언어 */
+  .option {
+    /* 마진을 주고 패딩을 활용 -> 선떄문에 그런 것 같음 */
+    margin: 40px 20px 0;
+    padding-top: 40px;
+
+    border-top: 1px solid #adadad;
+  }
+
+  .option .language .lang_select {
+    display: none;
+  }
+
+  .option .lang_list {
+    display: flex;
+  }
+
+  .option .lang_list li a {
+    color: #adadad;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  /* 본페이지에서 사용한 방법 */
+  .option .language .lang_list li + li {
+    margin-left: 45px;
+    /* relative를 준 이유는 가상요소를 넣어줄 생각  */
+    position: relative;
+  }
+
+  /* 가상요소를 이용한 세로 선 */
+  .option .language .lang_list li + li:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -22px;
+    width: 1px;
+    height: 100%;
+
+    background-color: #adadad;
+  }
+
+  .header-copyright {
+    display: block;
+
+    margin-top: 34px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    color: white;
+  }
+
+  /* 내가 사용했던 방법법 */
+  /*   .option .lang_list li:last-child a {
+    margin-left: 50px;
+  }
+ */
+
+  /* 모바일 서브탭메뉴에서 서브메뉴 */
+  .depth2 {
+    display: none;
+  }
 }
