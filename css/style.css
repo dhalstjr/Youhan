@@ -1549,7 +1549,7 @@ body[data-top="no-top"] #header .logo-box .logo {
     display: block;
     width: 3rem;
     height: 3rem;
-    background: #f5f url(../img/menu-open.png) no-repeat center / contain;
+    background: url(../img/menu-open.png) no-repeat center / contain;
     position: absolute;
     /* 이게 중간으로 가는 이유는 wrap에 depth1에 관련된 것들이 wrap과 떨어지기 때문에 */
     /* 크기를 갖지 않고 wrap은 header의 크기만을 가져버리기 때문에  */
@@ -1573,6 +1573,10 @@ body[data-top="no-top"] #header .logo-box .logo {
     height: 100vh;
 
     background: #181818;
+
+    /* opacity와 visibility을 활용 */
+    opacity: 0;
+    visibility: hidden;
   }
 
   /* 서브메뉴 탭이 활성화됐을 때 화면처리 */
@@ -1590,14 +1594,24 @@ body[data-top="no-top"] #header .logo-box .logo {
     right: 0;
     z-index: 20;
     background: rgba(0, 0, 0, 0.5);
+
+    /* opacity와 visibility을 활용 */
+    opacity: 0;
+    visibility: hidden;
   }
 
-  /* .gnb-curtain과 .gnb , .menu-close 이 요소들은 .gnb-open이 들어갔을 때 모습을 보여줘야함*/
+  /* .gnb-curtain과 .gnb  이 요소들은 .gnb-open이 들어갔을 때 모습을 보여줘야함*/
   .gnb-open .gnb {
+    /* opacity와 visibility을 활용 */
+    opacity: 1;
+    visibility: visible;
   }
   .gnb-open .gnb-curtain {
+    opacity: 1;
+    visibility: visible;
   }
 
+  /*  */
   /* 서브메뉴의 탭에 top부분 */
   .gnb-top {
     display: block;
