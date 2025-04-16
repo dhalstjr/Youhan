@@ -1560,11 +1560,12 @@ body[data-top="no-top"] #header .logo-box .logo {
   }
 
   /* 서브메뉴 탭 스타일을 만들기 */
+  /* class 주기 전 초기 모습 */
   .gnb {
     /* .gnb의 fixed를 주게 되면 menu-open의 아이콘이 자리를 정상적으로 잡을 수 있게 된다. */
     /* position : fixed도 절대요소 중 하나이기 때문에 HTML문서의 흐름을 따라가지 않게 된다. */
     position: fixed;
-    z-index: 10;
+    z-index: 50;
     top: 64px;
     right: 0;
     width: 45rem;
@@ -1575,6 +1576,7 @@ body[data-top="no-top"] #header .logo-box .logo {
   }
 
   /* 서브메뉴 탭이 활성화됐을 때 화면처리 */
+  /* class 주기 전 초기 모습 */
   .gnb-curtain {
     display: block;
     /* absolute를 사용하게 돠면 wrap에 relative가 있기 때문에 화면을 꽉차지 못하게 된다. */
@@ -1586,7 +1588,14 @@ body[data-top="no-top"] #header .logo-box .logo {
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  /* .gnb-curtain과 .gnb , .menu-close 이 요소들은 .gnb-open이 들어갔을 때 모습을 보여줘야함*/
+  .gnb-open .gnb {
+  }
+  .gnb-open .gnb-curtain {
   }
 
   /* 서브메뉴의 탭에 top부분 */
@@ -1604,7 +1613,7 @@ body[data-top="no-top"] #header .logo-box .logo {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 30px;
+    padding: 0 35px;
   }
 
   /* 탭메뉴의 아이콘과 닫기 버튼 */
@@ -1693,8 +1702,70 @@ body[data-top="no-top"] #header .logo-box .logo {
   }
  */
 
+  /* 부모에게도 transition을 준다. */
+  /* 부모와 자식의 transition은 따로 별개로 작동하지만, */
+  /* 부모에게도 transition을 준 이유는 서로 동시에 부드러운 전환을 위해 함께 주는 것이다. */
+
+  .depth2 .depth_list2 .depth_item2 {
+    transition: 250ms ease-in-out;
+
+    /* 초기 상태 */
+    /* 우리 둘의 조합은 이유는 */
+    /* opacity : 0 을 사용하면 요소가 안보이는 효과를 가지게 되는데 클릭 대상이다. */
+    /* 하지만 visibility : hidden을 사용하게 되면 클릭 요소까지 제거되기 때문에 */
+    /* 안 보이고 작동도 안하는 상태가 된다. */
+    opacity: 0;
+    visibility: hidden;
+
+    /* 이것도 class가 들어갔을 때 들어가는 코드 */
+    /*     opacity: 1;
+    visibility: visible; */
+  }
+
   /* 모바일 서브탭메뉴에서 서브메뉴 */
-  .depth2 {
+  .depth2 .depth_list2 .depth_item2 .depth_text2 {
+    color: white;
+    display: block;
+    /*  padding: 15px 40px; */
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+
+    /* line-height를 0으로 주게 되면 텍스트가 줄간격을 0으로 만들어 텍스트를 겹치게 한다. */
+    line-height: 0;
+    /* padding을 위도 같이 주게 되면 텍스트가 겹치게 되지 않는다. */
+    /* 따라서 스크롤 효과를 효과적으로 주고 싶을 땐 padding 위 아래는 주지 않는다. */
+    padding-left: 40px;
+
+    /* 이건 서브메뉴가 나왔을 때 모습 -> 이건 class가 붙었을 떄로 이동할거임*/
+    /*     padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 1.5; */
+
+    /* 따라서 효과를 주고 싶은 property를 설정헤준디. */
+    transition: 250ms ease-in-out;
+    transition-property: padding;
+  }
+
+  /* 클래스가 붙었을 때의 모습 */
+  .depth_item1.active .depth2 .depth_list2 .depth_item2 {
+    /* 서브메뉴가 보이도록 설정 */
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .depth_item1.active .depth2 .depth_list2 .depth_item2 .depth_text2 {
+    /* padding을 위아래 줘서 텍스트간의 차이를 만들어주고  */
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    /* 줄 간격도 설정 */
+    line-height: 1.5;
+  }
+
+  /* 서브메뉴안에 작은 서브메뉴 */
+  .depth3 {
+    /* display : none 한 이유는 공간을 차지하게 때문에 사라지게 해 틀어지는 것을 막기 위해 */
     display: none;
   }
 }

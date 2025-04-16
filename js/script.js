@@ -344,4 +344,6 @@ $(function () {
       $(this).addClass("on").siblings("ul").addClass("active");
     }
   });
+
+  // 모바일 탭메뉴 부분
 });
