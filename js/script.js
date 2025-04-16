@@ -346,4 +346,13 @@ $(function () {
   });
 
   // 모바일 탭메뉴 부분
+
+  // 탭메뉴 아이콘에 gnb-open 클래스 부여 및 제거
+  $(".menu-open").on("click", function () {
+    $("html").addClass("gnb-open");
+  });
+
+  $(".menu-close").on("click", function () {
+    $("html").removeClass("gnb-open");
+  });
 });

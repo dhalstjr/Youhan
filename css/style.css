@@ -1574,6 +1574,11 @@ body[data-top="no-top"] #header .logo-box .logo {
 
     background: #181818;
 
+    /* 본페이지에서는 transition을 gnb-open이 붙었을 때만 사용했다 */
+    /* 이유는 gnb-open이 붙었을 때만 부드럽게 전환됐으면 하는 것 같음 */
+    /* 난 근데 두개 다 부드럽게 하기 위해서 요소에 설정 */
+    transition: 250ms ease-in-out;
+
     /* opacity와 visibility을 활용 */
     opacity: 0;
     visibility: hidden;
@@ -1595,6 +1600,11 @@ body[data-top="no-top"] #header .logo-box .logo {
     z-index: 20;
     background: rgba(0, 0, 0, 0.5);
 
+    /* 본페이지에서는 transition을 gnb-open이 붙었을 때만 사용했다 */
+    /* 이유는 gnb-open이 붙었을 때만 부드럽게 전환됐으면 하는 것 같음 */
+    /* 난 근데 두개 다 부드럽게 하기 위해서 요소에 설정 */
+    transition: 250ms ease-in-out;
+
     /* opacity와 visibility을 활용 */
     opacity: 0;
     visibility: hidden;
@@ -1605,6 +1615,9 @@ body[data-top="no-top"] #header .logo-box .logo {
     /* opacity와 visibility을 활용 */
     opacity: 1;
     visibility: visible;
+
+    /* .gnb-open이 붙었을 때만 자연스런 부드러운 효과를 주려고 함. */
+    /*     transition: 250ms ease-in-out; */
   }
   .gnb-open .gnb-curtain {
     opacity: 1;
