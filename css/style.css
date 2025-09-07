@@ -1297,7 +1297,7 @@ body[data-top="no-top"] #header .logo-box .logo {
     /* 저거를 사용하면 헤더의 선에 딱 알맞게 걸친다. */
     height: calc(100% - 64px);
 
-    background: #55f;
+    /*     background: #55f; */
     visibility: hidden;
     opacity: 0;
 
@@ -1316,8 +1316,6 @@ body[data-top="no-top"] #header .logo-box .logo {
     display: block;
     font-size: 1.6rem;
     color: white;
-    border: 1px solid #000;
-
     /* 오픈했을 떄로 이동 지금은 보이게 하기 위해서 */
     /*   padding: 10px 0;
     line-height: 1; */
@@ -1582,6 +1580,9 @@ body[data-top="no-top"] #header .logo-box .logo {
     /* opacity와 visibility을 활용 */
     opacity: 0;
     visibility: hidden;
+
+    /* 스크롤할 수 있도록 하는 코드 */
+    overflow-y: auto;
   }
 
   /* 서브메뉴 탭이 활성화됐을 때 화면처리 */

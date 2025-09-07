@@ -355,4 +355,119 @@ $(function () {
   $(".menu-close").on("click", function () {
     $("html").removeClass("gnb-open");
   });
+
+  // c.depth_text에 요소가 클릭되면 document에 전달된다.
+  // $(.depth_text).on(click ,'.depth_text',function(e))
+  // ->$(선택자).on(click,"className",function(e))와의 차이는
+  // 이벤트 위임(Event Delegation)이라는 개념에서 큰 차이가 있다.
+  // 핵심 차이점은 저 위 코드는 기존에 DOM에 존재하던 요소에만 이벤트가 부착되고(정적요소)
+  // 아래 코드는 이벤트 위임 방식으로, 동적으로 생성된 .depth_text에도 작동이 된다는 것이다.
+  // 쉽게 말해, 처음 HTML에 클래스를 만든 것이 아니라, 자바 스크립트나 ajax 등으로 동적으로 추가되면
+  // 위 코드는 실행되지 않고, 아래의 코드만 실행이 된다.
+  // document는 항상 존재하기 때문에 클릭 이벤트가 먼저 document에 걸리고, 이벤트 버블링을 통해 .depth_text까지 전파가 된다.
+  // 이벤트 버블링이란 -> 이벤트가 발생한 요소에서부터 상위 요소까지 전파되는 현상
+  // 이 아래 방식은 .depth_text 나중에 생성되어도 적용 가능하다.(ajax,.append()함수, Jquery)
+  // 이 아래 코드를 사용한 이유는 HTML에 .depth_text가 처음에 없었고. 나중에 동적으로 추가되는 구조였기 때문에 사용된 것으로 보인다.
+  // 처음에 HTML에 존재했다면 저 위에 코드를 사용해도 좋을 것이다.
+
+  // 본 페이지에 코드는 Jquery의 $.ajax()로 JSON 데이터를 불러오고 ,HTML을 만들어서 삽입했다.
+  // JSON : 데이터를 저장, 전송할 때 많이 사용되는 경량의 DATA 교환 형식, 객체를 만들 때 사용하는 표현식을 의미한다. 사람과 기계 모두 이해하기 쉬우며, 용량이 적다.
+  // ajax : 비동기 자바스크립트와 XML을 말한다. XML뿐 아니라 HTML, JSON, 일반 텍스트 형식 등 포함한 다양한 포맷을 주고 받는다.
+  // ajax를 사용하는 이유는 필요한 내용만 부분적으로 갱신하여 필요한 데이터와 자원만 받아올 수 있어 시간과 자원을 아낄 수 있다.
+  // 비동기식 방식은 서버의 응답을 대기하지 않고, 서버의 데이터가 준비되는 동안에도 사용자가 웹페이지에서 다른 작업을 수행할 수 있는 방식
+  // 본페이지에서는 메뉴를 동적으로 만든 이유는
+  // 1. 다국어 / 다국적 사이트 대응 - 유지보수, 다국어 변경 시 JSON만 바꾸면 됨
+  // 2. 여러 페이지에서 공통으로 사용하는 메뉴를 한 곳에서 변경 가능 -> 여러 페이지에서의 코드를 중복시키지 않을 수 있다.
+  // 3. 페이지 로딩 속도와 렌더링 최적화
+  // 4. 헤더 또는 메뉴 구성의 유연성 확보
+  // 5. SPA대응
+
+  // 결국엔 나는 HTML에 depth-text를 기입했고, 본페이지는 없기 때문에 $(document).. 를 사용한 것이다.
+  // 내 코딩에는 결국 둘 다 사용 가능하다. (HTML에 미리 기입했기 떄문에)
+  // 안전하게 동적 요소까지 고려한다면 $(document).. 방식이 좋다.
+
+  // 동적인 요소까지 사용 가능한 코드
+  // DOM내에서 .depth_text에게 click 이벤트를 걸어준다.
+  // $(document).on("click", ".depth_text", function (e) {
+  //   // 하나의 var 선언으로 두 개의 변수를 동시에 선언한 문법
+  //   // 즉 함수명 앞에 var이 들어갔다고 생각하면 된다. var isActive = $..
+  //   // let, var, const는 한줄에서 쉼표(,)로 여러 개의 변수 선언이 가능하다. 마지막 변수에게만 세미클론(;)을 사용하면 된다.
+  //   // var는 함수 스코프라 let,const를 많이 사용한다. 함수 스코프는 함수 내부에서 선언된 변수가 해당 변수내에서만 사용 가능하다는 것이다.
+
+  //   // var 변수로 선언 -> .depth_text에 바로 위 부모 요소에 "has" 클래스를 가지고 있는 확인
+  //   var isHas = $(".depth_text").parent().hasClass("has"),
+  //     isActive = $(".depth_text").parent().hasClass("active");
+  //   if (isHas) {
+  //     // 브라우저 창의 너비(스크롤 포함)가 1200이 넘으면
+  //     if (window.innerWidth > 1200) {
+  //       // depth_text에 "depth_text2"라는 클래스를 가지고 있으면
+  //       if ($(this).hasClass("depth_text2")) {
+  //         // 브라우저 이벤트의 기본 동작을 막는 역할. 즉, 특정 이벤트(예 : click, submit , keydown등) 발생 시 브라우저가 기본적으로 수행하는 동작을 하지 못하도록 막을 수 있습니다.
+  //         // 이걸 사용한 이유 -> a 태그의 기본 링크 이동을 방지하려고 한 것 같다. -> 페이지가 새로고침 되거나, 위로 튕기거나
+  //         // 클랙시 서브메뉴가 나오는 효과라 링크의 이동을 막고 애니메이션 구현하려고 한 것 같음.
+  //         // 서브메뉴가 나오는 효과라서 .depth_text1이 e.preventDefault가 들어가는 줄 알았는데,
+  //         // 생각해보니 depth_text2도 하위메뉴가 있기 때문에 기본 동작인 링크 이동을 막아야 했다.
+  //         // 왜냐면 이것은 반응형이기 때문에 .depth_text2도 서브메뉴가 내려오는 트리거 역할을 해야 하기 떄문에 사용해야한다.
+  //         // 1200px이 넘었을 때는
+  //         e.preventDefault();
+
+  //         if (isActive) {
+  //           $(this).parent().removeClass("active");
+  //         } else {
+  //           $(".depth_item2").removeClass("active");
+  //           $(this).parent().addClass("active");
+  //         }
+  //       }
+
+  //       //브라우저 창의 너비(스크롤 포함)가 1200이 넘지 않으면
+  //     } else {
+  //       e.preventDefault();
+
+  //       if (isActive) {
+  //         $(this).parent().removeClass("active");
+  //       } else {
+  //         $(".depth_item2").removeClass("active");
+  //         $(this).parent().addClass("active").siblings().removeClass("active");
+  //       }
+  //     }
+  //   }
+  // });
+
+  // .depth_text와 this의 큰 차이를 못느껴서 this안에 .depth_text를 넣었는데
+  // 극명한 차이가 있음.
+  // .depth_text와 this의 차이
+
+  // .depth_text에 click 이벤트를 주었다
+  const DepthThis = $(document).on("click", ".depth_text", function () {
+    // 그 차이는 .depth_text로 사용하게 된다면 .depth_text에 클릭을 하게 되면
+    // 이벤트가 발생하면서 콘솔이 나오는데 콘솔창에는
+    const DepthText = $(".depth_text").parent();
+    // 페이지에 있는 .depth_text의 요소가 모두 가져오게 된다. -> 여기서 극명한 차이가 난다는 것이다.
+    console.log(DepthText);
+
+    // this를 사용한 곳에서는 클릭한 요소의 .depth_text만 나오게 된다는 것이다. -> 단 하나의 요소만 나온다는 것이다.
+    const DepthT = $(this).parent();
+    console.log(DepthT);
+
+    // 여기서 알 수 있는 점은 this와 .depth_text의 차이점을 극명하게 알고 실행이 된다고 해도 정확하지 않다는 것을 알아야한다.
+    // .depth_text로 해서 실행이 되서 되는건 줄 알았지만 정확한 차이점을 알고 오류를 줄이는 것이 중요하다
+    // hasClass()가 붙으면 true를 반환하기 때문에 실행되는 것이였다.
+    // 클릭한 요소에게만 실행되는 것이 중요하겠다. !!
+  });
+
+  $(document).on("click", ".depth_text", function () {
+    var isHas = $(this).parent().hasClass("has"), // 클릭한 요소 .depth_text에 has 클래스 유무판단 하여 true/false를 반환
+      isActive = $(this).parent().hasClass("active"); // 이것도 마찬가지로 active 클래스 유무 판단 하여 값을 반환
+    console.log(isHas, isActive);
+
+    // has 클래스의 true와 false를  if-else 문법을 이용
+    // true일 때
+    if (isHas) {
+      if (window.innerWidth > 1200) {
+      }
+
+      // false일 때
+    } else {
+    }
+  });
 });
